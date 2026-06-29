@@ -6,7 +6,7 @@
 /*   By: malrandr <malrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 15:39:45 by malrandr          #+#    #+#             */
-/*   Updated: 2026/06/29 18:09:17 by malrandr         ###   ########.fr       */
+/*   Updated: 2026/06/29 21:46:34 by malrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,37 @@ void	PhoneBook::AddContact(void)
 	std::cout << "⋆⭒˚.⋆ Contact successfully added! ݁⋆⭒˚.⋆" << std::endl;
 }
 
+void	PhoneBook::prettyPrint(std::string field)
+{
+	int		len;
+	int		i;
+
+	i = 0;
+	len = field.length();
+	std::cout << "|";
+	if (len > 10)
+	{
+		field = field.substr(0, 9);
+		std::cout << field << ".";
+	}
+	else
+	{
+		while (i < 10 - len)
+		{
+			std::cout << " ";
+			i++;
+		}
+		std::cout << field;
+	}
+}
+
 void	PhoneBook::DisplayContacts(void)
 {
-	int		idx;
+	std::string		fName;
+	std::string		lName;
+	std::string		nick;
+	int				idx;
 
-	std::cout << "+============ CONTACT INFOS =============+" << std::endl;
 	std::cout << " __________ __________ __________ __________" << std::endl;
 	std::cout << "|     INDEX|";
 	std::cout << "FIRST NAME|";
@@ -67,12 +93,16 @@ void	PhoneBook::DisplayContacts(void)
 	std::cout << "       AKA|" << std::endl;
 	std::cout << " __________ __________ __________ __________" << std::endl;
 	idx = 0;
-	while (idx < this->_slot)
+	while (idx < this->_used)
 	{
-		std::cout << "|         " << this->_Contacts[idx].getIndex() << "|";
-		std::cout << this->_Contacts[idx].getFirstName() << "|";
-		std::cout << this->_Contacts[idx].getLastName() << "|";
-		std::cout << this->_Contacts[idx].getNickname() << "|" << std::endl;
+		std::cout << "|         " << idx;
+		fName = _Contacts[idx].getFirstName();
+		lName = _Contacts[idx].getLastName();
+		nick = _Contacts[idx].getNickname();
+		this->prettyPrint(fName);
+		this->prettyPrint(lName);
+		this->prettyPrint(nick);
+		std::cout << "|" << std::endl;
 		std::cout << " __________ __________ __________ __________" << std::endl;
 		idx++;
 	}
