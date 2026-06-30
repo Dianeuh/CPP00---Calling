@@ -6,7 +6,7 @@
 /*   By: malrandr <malrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 15:39:45 by malrandr          #+#    #+#             */
-/*   Updated: 2026/06/30 14:03:20 by malrandr         ###   ########.fr       */
+/*   Updated: 2026/06/30 17:47:21 by malrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,21 @@ void	PhoneBook::SearchIndex(void)
 	std::string		index;
 	int				idx;
 
-	std::cout << "Pick a number between 0 & " << this->_used - 1 << " for more info: ";
-	if (!getline(std::cin, index))
+	if (this->_used == 0)
+	{
+		std::cout  << BLUE << "PhoneBook is still empty. ";
+		std::cout << "Add in some friends to get started! :]" << std::endl;
+		std::cout << DEFAULT;
 		return ;
-	if (!myTools::isNumeric(index))
+	}
+	std::cout << "Pick a number between 0 & " << this->_used - 1 << " for more info: ";
+	getline(std::cin, index);
+	if (std::cin.eof())
+	{
+		std::cout << std::endl;
+		return ;
+	}
+	if (index.empty() || myTools::isEmpty(index) || !myTools::isNumeric(index))
 	{
 		std::cout << RED << "Try again! ";
 		std::cout << RED << "We only asked you to enter one 𝘯𝘶𝘮-𝘣𝘦𝘳." << std::endl;

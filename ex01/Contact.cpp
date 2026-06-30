@@ -6,7 +6,7 @@
 /*   By: malrandr <malrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 15:42:32 by malrandr          #+#    #+#             */
-/*   Updated: 2026/06/30 16:03:17 by malrandr         ###   ########.fr       */
+/*   Updated: 2026/06/30 16:50:50 by malrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ void	Contact::setPhoneNumber(void)
 	std::string		number;
 
 	if (std::cin.eof())
-	return ;
+		return ;
 	std::cout << "Enter your phone number > ";
 	getline(std::cin, number);
 	if (std::cin.eof())
