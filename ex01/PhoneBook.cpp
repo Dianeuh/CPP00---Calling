@@ -6,7 +6,7 @@
 /*   By: malrandr <malrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 15:39:45 by malrandr          #+#    #+#             */
-/*   Updated: 2026/06/29 21:46:34 by malrandr         ###   ########.fr       */
+/*   Updated: 2026/06/30 14:03:20 by malrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	PhoneBook::AddContact(void)
 	this->_slot = (_slot + 1) % MAX_CONTACTS;
 	if (this->_used <= 7)
 		this->_used++;
-	std::cout << "⋆⭒˚.⋆ Contact successfully added! ݁⋆⭒˚.⋆" << std::endl;
 }
 
 void	PhoneBook::prettyPrint(std::string field)
@@ -64,67 +63,62 @@ void	PhoneBook::prettyPrint(std::string field)
 	len = field.length();
 	std::cout << "|";
 	if (len > 10)
-	{
-		field = field.substr(0, 9);
-		std::cout << field << ".";
-	}
+		std::cout << field.substr(0,9) << ".";
 	else
 	{
-		while (i < 10 - len)
-		{
-			std::cout << " ";
-			i++;
-		}
+		std::cout << std::setw(10);
 		std::cout << field;
 	}
 }
 
 void	PhoneBook::DisplayContacts(void)
 {
-	std::string		fName;
-	std::string		lName;
-	std::string		nick;
 	int				idx;
 
+	std::cout << "+============== CONTACTs INFOS ==============+" << std::endl;
 	std::cout << " __________ __________ __________ __________" << std::endl;
 	std::cout << "|     INDEX|";
 	std::cout << "FIRST NAME|";
 	std::cout << " LAST NAME|";
-	std::cout << "       AKA|" << std::endl;
+	std::cout << "  NICKNAME|" << std::endl;
 	std::cout << " __________ __________ __________ __________" << std::endl;
 	idx = 0;
 	while (idx < this->_used)
 	{
-		std::cout << "|         " << idx;
-		fName = _Contacts[idx].getFirstName();
-		lName = _Contacts[idx].getLastName();
-		nick = _Contacts[idx].getNickname();
-		this->prettyPrint(fName);
-		this->prettyPrint(lName);
-		this->prettyPrint(nick);
+		std::cout << "|";
+		std::cout << std::setw(10);
+		std::cout << idx;
+		this->prettyPrint(_Contacts[idx].getFirstName());
+		this->prettyPrint(_Contacts[idx].getLastName());
+		this->prettyPrint(_Contacts[idx].getNickname());
 		std::cout << "|" << std::endl;
 		std::cout << " __________ __________ __________ __________" << std::endl;
 		idx++;
 	}
 }
 
-// void	PhoneBook::SearchIndex(void)
-// {
-// 	std::string		index;
-// 	int				idx;
+void	PhoneBook::SearchIndex(void)
+{
+	std::string		index;
+	int				idx;
 
-// 	std::cout << "Enter index for more information (0-7): ";
-// 	getline(std::cin, index);
-// 	if (!myTools::isNumeric(index))
-// 	{
-// 		std::cout << RED << "Invalid index. ";
-// 		std::cout << "Please input a number between 0 & " << this->_slot;
-// 		std::cout << DEFAULT;
-// 		return ;
-// 	}
-// 	idx = atoi(index.c_str());
-// 	if (idx < 0 || idx > 7)
-// 	{
-// 		std::cout << RED << "Invalid index. Index out of range.";
-// 	}
-// }
+	std::cout << "Pick a number between 0 & " << this->_used - 1 << " for more info: ";
+	if (!getline(std::cin, index))
+		return ;
+	if (!myTools::isNumeric(index))
+	{
+		std::cout << RED << "Try again! ";
+		std::cout << RED << "We only asked you to enter one 𝘯𝘶𝘮-𝘣𝘦𝘳." << std::endl;
+		std::cout << DEFAULT;
+		return ;
+	}
+	idx = std::atoi(index.c_str());
+	if (idx < 0 || idx >= this->_used)
+	{
+		std::cout << RED << "Invalid index. Index out of range." << std::endl;
+		std::cout << DEFAULT;
+		return ;
+	}
+	this->_Contacts[idx].DisplayContactInfo();
+	return ;
+}

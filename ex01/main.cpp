@@ -6,7 +6,7 @@
 /*   By: malrandr <malrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 16:24:01 by malrandr          #+#    #+#             */
-/*   Updated: 2026/06/29 18:04:36 by malrandr         ###   ########.fr       */
+/*   Updated: 2026/06/30 13:58:42 by malrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	main(void)
 {
 	PhoneBook		AwesomePB;
 	std::string		cmd;
-	Contact			AContact;
 
 	Welcome();
 	Commands();
@@ -64,6 +63,11 @@ int	main(void)
 	{
 		std::cout << "ִֶָ. ࣪ ִֶָ🪽་༘࿐ > ";
 		getline(std::cin, cmd);
+		if (std::cin.eof())
+		{
+			std::cout << std::endl;
+			break ;
+		}
 		if (cmd.compare("ADD") == 0)
 		{
 			AwesomePB.AddContact();
@@ -71,6 +75,7 @@ int	main(void)
 		else if (cmd.compare("SEARCH") == 0)
 		{
 			AwesomePB.DisplayContacts();
+			AwesomePB.SearchIndex();
 		}
 	}
 }

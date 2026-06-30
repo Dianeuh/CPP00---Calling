@@ -6,7 +6,7 @@
 /*   By: malrandr <malrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 15:36:40 by malrandr          #+#    #+#             */
-/*   Updated: 2026/06/29 21:21:18 by malrandr         ###   ########.fr       */
+/*   Updated: 2026/06/30 11:17:07 by malrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # define MAX_CONTACTS 8
 
 # include <iostream>
+# include <iomanip>
+# include <cstdlib>
 # include <string>
 # include "Contact.hpp"
 
@@ -33,7 +35,7 @@ class PhoneBook
 		void	AddContact(void);
 		void	DisplayContacts(void);
 		void	prettyPrint(std::string field);
-		// void	SearchIndex(void);
+		void	SearchIndex(void);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: malrandr <malrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 15:42:52 by malrandr          #+#    #+#             */
-/*   Updated: 2026/06/29 16:55:02 by malrandr         ###   ########.fr       */
+/*   Updated: 2026/06/30 10:46:42 by malrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 namespace	myTools
 {
 	int		isNumeric(std::string str);
+	int		isEmpty(std::string str);
+	int		isPrintable(std::string str);
 };
 
 class Contact
@@ -51,7 +53,7 @@ class Contact
 		void			setNickname(void);
 		void			setPhoneNumber(void);
 		void			setThatSecret(void);
-		void			DisplayContactInfo(int idx);
+		void			DisplayContactInfo(void);
 };
 
 #endif
