@@ -22,13 +22,32 @@ How to instanciate an object:
 
 **Member Attributes and member functions (méthodes)**
 
-**this**
+**this**  
+A cool pointer to the current object instance  
+(un pointeur spécial sur l'instance courante)
 
-**Init_List**
-
+**Init_List**  
+Allows you to initialize an attribute directly without having to assign it.   
+Syntax:
 ```C++
-const
+class	Child
+{
+	private:
+		int				_age;
+		std::string		_name;
+		std::string		_new_name;
+	public:
+		Child(std::string n, std::string new, int a) : _name(n), _new_name(new), _age(a);
+		~Child();
+}
 ```
+
+**const**
+It basically tells you that what you are `const`-ing cannot be changed, 
+it means *read-only*.   
+It can be a variable, a class member attribute or a class member function.  
+When it's a variable, you must set its value at initialization.  
+When it's a member function, it means you cannot change the value of any of the member attributes in any way. 
 
 **Accessors in classes**
 

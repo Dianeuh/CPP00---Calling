@@ -6,7 +6,7 @@
 /*   By: malrandr <malrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 15:42:52 by malrandr          #+#    #+#             */
-/*   Updated: 2026/06/30 10:46:42 by malrandr         ###   ########.fr       */
+/*   Updated: 2026/07/01 14:42:57 by malrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define BLUE		"\033[96m"
 # define CYAN 		"\033[96m"
 # define DEFAULT 	"\033[39m"
+# define ORANGE		"\033[93m"
 
 namespace	myTools
 {

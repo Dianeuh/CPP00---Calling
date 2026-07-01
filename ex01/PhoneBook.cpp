@@ -6,7 +6,7 @@
 /*   By: malrandr <malrandr@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 15:39:45 by malrandr          #+#    #+#             */
-/*   Updated: 2026/06/30 17:47:21 by malrandr         ###   ########.fr       */
+/*   Updated: 2026/07/01 14:44:43 by malrandr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ PhoneBook::PhoneBook()
 {
 	this->_slot = 0;
 	this->_used = 0;
-	std::cout << GREEN << "PhoneBook was created !" << DEFAULT << std::endl;
+	std::cout << GREEN << " ₊˚ ☎︎₊˚✧ PhoneBook was created !₊˚ ☎︎₊˚✧" << DEFAULT << std::endl;
 	return ;
 }
 
 PhoneBook::~PhoneBook()
 {
-	std::cout << RED << "Bye bye, my Awesome Phonebook . ₊˚ ☎︎₊˚✧" << std::endl;
+	std::cout << RED << "₊˚ ☎︎₊˚✧ Bye bye, my Awesome Phonebook . ₊˚ ☎︎₊˚✧" << std::endl;
 	std::cout << DEFAULT;
 	return ;
 }
@@ -118,8 +118,8 @@ void	PhoneBook::SearchIndex(void)
 	}
 	if (index.empty() || myTools::isEmpty(index) || !myTools::isNumeric(index))
 	{
-		std::cout << RED << "Try again! ";
-		std::cout << RED << "We only asked you to enter one 𝘯𝘶𝘮-𝘣𝘦𝘳." << std::endl;
+		std::cout << RED << "No index was input. ";
+		std::cout << ORANGE << "Tap SEARCH again to show contact info." << std::endl;
 		std::cout << DEFAULT;
 		return ;
 	}
